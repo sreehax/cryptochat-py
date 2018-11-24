@@ -67,7 +67,7 @@ class CryptoChatHandler(socketserver.BaseRequestHandler):
                 addr = keys[v]
                 a = addr[0]+","+str(addr[1])+"\n"
                 a = a.encode()
-                msg = b"request-from " + addr[0].encode() + b"," + str(addr[1]).encode() + b"\n"
+                msg = b"request-from " + self.client_address[0].encode() + b"," + str(self.client_address[1]).encode() + b"\n"
                 socket.sendto(msg, (addr[0], addr[1]))
                 socket.sendto(a, self.client_address)
             else:
